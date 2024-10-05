@@ -9,9 +9,6 @@ import (
   "gorm.io/driver/postgres"
   "gorm.io/gorm"
 )
-type User struct {
-    Name string
-}
 
 func main() {
 
@@ -35,7 +32,6 @@ func main() {
    }
    log.Println("DB Connection started successfully")
 
-   // Create table for `User`
    db.Migrator().CreateTable(&User{})
 
    
