@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/neerajbg/go-fiber-blog/database"
-	"github.com/neerajbg/go-fiber-blog/model"
+	"github.com/kyp0717/ewxback/database"
+	"github.com/kyp0717/ewxback/model"
 )
 
 // Blog list

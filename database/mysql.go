@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/neerajbg/go-fiber-blog/model"
+  "github.com/kyp0717/ewxback/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

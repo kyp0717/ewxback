@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"log"
@@ -6,9 +6,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
-	"github.com/neerajbg/go-fiber-blog/database"
-	"github.com/neerajbg/go-fiber-blog/router"
-
+  "github.com/kyp0717/ewxback/router"
+  "github.com/kyp0717/ewxback/database"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 

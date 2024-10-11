@@ -8,6 +8,8 @@ import (
  "log"
   "gorm.io/driver/postgres"
   "gorm.io/gorm"
+  "github.com/kyp0717/ewxback/router"
+  "github.com/kyp0717/ewxback/database"
 )
 
 func main() {
