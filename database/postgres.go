@@ -3,28 +3,36 @@ package database
 import (
 	"log"
 	"os"
+  "fmt"
 
-	"github.com/neerajbg/go-fiber-blog/model"
-	"gorm.io/driver/mysql"
+  "database/sql"
+	"github.com/kyp0717/ewxback/model"
+  "gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
+	// "gorm.io/gorm/logger"
 )
 
-var DBConn *gorm.DB
+var PgDBConn *gorm.DB
 
-func ConnectDB() {
+func PgConnectDB() {
 
 	// Access DB credentials from environment
 	host := os.Getenv("db_host")
 	user := os.Getenv("db_user")
 	password := os.Getenv("db_password")
 	dbname := os.Getenv("db_name")
+	dbport:= os.Getenv("db_port")
 
-	dsn := user + ":" + password + "@tcp(" + host + ":3306)/" + dbname + "?charset=utf8mb4&parseTime=True&loc=Local"
+  fmt.Println("Starting connection with Postgres Db")
+  // connStr := "postgres://postgres:password@localhost:5432/tbl_ews?sslmode=disable"
+  dsn := user + "://postgres:" + password + "@" +  host + ":" + dbport + "/" + dbname + "?sslmode=disable"
 
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
-		Logger: logger.Default.LogMode(logger.Error),
-	})
+  pgDB, err := sql.Open("postgres", dsn)
+
+  db, err := gorm.Open(postgres.New(postgres.Config{
+    Conn: pgDB,
+  }), &gorm.Config{})
+
 
 	if err != nil {
 		panic("Database connection failed.")
@@ -34,5 +42,5 @@ func ConnectDB() {
 
 	db.AutoMigrate(new(model.Blog))
 
-	DBConn = db
+	PgDBConn = db
 }
