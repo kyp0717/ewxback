@@ -5,7 +5,6 @@ import (
 	"os"
   "fmt"
 
-  "database/sql"
 	"github.com/kyp0717/ewxback/model"
   "gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -24,15 +23,9 @@ func PgConnectDB() {
 	dbport:= os.Getenv("db_port")
 
   fmt.Println("Starting connection with Postgres Db")
-  // connStr := "postgres://postgres:password@localhost:5432/tbl_ews?sslmode=disable"
   dsn := user + "://postgres:" + password + "@" +  host + ":" + dbport + "/" + dbname + "?sslmode=disable"
 
-  pgDB, err := sql.Open("postgres", dsn)
-
-  db, err := gorm.Open(postgres.New(postgres.Config{
-    Conn: pgDB,
-  }), &gorm.Config{})
-
+  db, err := gorm.Open(postgres.Open(dsn) , &gorm.Config{})
 
 	if err != nil {
 		panic("Database connection failed.")
@@ -43,4 +36,5 @@ func PgConnectDB() {
 	db.AutoMigrate(new(model.Blog))
 
 	PgDBConn = db
+
 }

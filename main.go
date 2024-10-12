@@ -1,7 +1,7 @@
 package main
 
 import (
- "github.com/gofiber/fiber/v2"
+ // "github.com/gofiber/fiber/v2"
  "github.com/joho/godotenv"
 
  // "database/sql"
@@ -27,7 +27,7 @@ func init() {
 func main() {
 
    fmt.Println("Starting Fiber App")
-   app := fiber.New()
+   // app := fiber.New()
 
    // connStr := "postgres://postgres:password@localhost:5432/tbl_ews?sslmode=disable"
    // pgDB, err := sql.Open("postgres", connStr)
@@ -49,6 +49,6 @@ func main() {
    // db.Migrator().CreateTable(&model.Blog{})
 
    
-   app.Listen(":3000")
+   // app.Listen(":3000")
 
 }
