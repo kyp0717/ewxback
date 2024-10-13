@@ -1,6 +1,6 @@
 package model
 
-type item struct {
+type Item struct {
 	Item string `json:"Item" gorm:"primaryKey";size:20"`
 
 	SKU string `json:"SKU" gorm:"null;column:SKU;size:255"`
