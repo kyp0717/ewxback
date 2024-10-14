@@ -1,6 +1,7 @@
 package main
 
 import (
+ "github.com/kyp0717/ewxback/dataload"
  "github.com/gofiber/fiber/v2"
  "github.com/joho/godotenv"
 
@@ -16,9 +17,12 @@ func init() {
 		log.Fatal("Error in loading .env file.")
 	}
 	database.PgConnectDB()
+  
 }
 
 func main() {
+   // load data
+   dataload.testload(database.PgDBConn) 
 
    fmt.Println("Starting Fiber App")
    app := fiber.New()
