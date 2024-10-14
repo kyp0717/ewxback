@@ -29,7 +29,7 @@ type Item struct {
 	UpdateStamp      string  `json:"UpdateStamp" gorm:"column:UpdateStamp;type:date;null"`
 }
 
-func main() {
+func item_load() {
 	// Initialize DB connection
 	dsn := "host=localhost user=youruser password=yourpassword dbname=yourdbname port=5432 sslmode=disable"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
