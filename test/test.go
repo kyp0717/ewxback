@@ -1,4 +1,4 @@
-package dataload
+package test
 
 import (
 	"github.com/kyp0717/ewxback/model"
@@ -10,10 +10,10 @@ import (
   "strconv"
 ) 
 
-func testload(db *gorm.DB ) {
+func Testload(db *gorm.DB ) {
 
 	// Load CSV data
-	csvFile, err := os.Open("test.csv") // Replace with your CSV file path
+	csvFile, err := os.Open("test/test.csv") // Replace with your CSV file path
 	if err != nil {
 		log.Fatalf("Failed to open CSV file: %v", err)
 	}

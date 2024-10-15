@@ -1,7 +1,8 @@
 package main
 
 import (
- "github.com/kyp0717/ewxback/dataload"
+ // "github.com/kyp0717/ewxback/dataload"
+ "github.com/kyp0717/ewxback/test"
  "github.com/gofiber/fiber/v2"
  "github.com/joho/godotenv"
 
@@ -22,7 +23,7 @@ func init() {
 
 func main() {
    // load data
-   dataload.testload(database.PgDBConn) 
+   test.Testload(database.PgDBConn) 
 
    fmt.Println("Starting Fiber App")
    app := fiber.New()
