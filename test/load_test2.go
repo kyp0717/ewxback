@@ -2,6 +2,7 @@ package test
 
 import (
 	"github.com/kyp0717/ewxback/model"
+  "github.com/shopspring/decimal"
   "os"
   "log"
   "fmt"
@@ -10,7 +11,7 @@ import (
   "strconv"
 ) 
 
-func Testload(db *gorm.DB ) {
+func Testload2(db *gorm.DB ) {
 
 	// Load CSV data
 	csvFile, err := os.Open("test/test.csv") // Replace with your CSV file path
@@ -30,11 +31,10 @@ func Testload(db *gorm.DB ) {
 
 	// Loop through the records and create Items
 	for _, record := range records {
-    fmt.Println(record[0])
-    fmt.Println(parseFloat(record[1]))
-		test := &model.Test{
+    p, _ := decimal.NewFromString(record[1])
+		test := &model.TestTable{
 			Item:         record[0],
-			Price:        parseFloat(record[1]),
+			Price:        p,
 		}
 
 		// Save item to the database

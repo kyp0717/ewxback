@@ -32,7 +32,7 @@ func PgConnectDB() {
 
 	log.Println("Connection successful.")
 
-	db.AutoMigrate(&model.Blog{}, &model.Item{}, &model.Test{})
+	db.AutoMigrate(&model.Blog{}, &model.Item{}, &model.TestTable{})
 
 	PgDBConn = db
 

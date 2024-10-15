@@ -7,7 +7,7 @@ import (
     "github.com/jackc/pgx"
 )
 
-func LoadTest() {
+func LoadTest1() {
     pgxConConfig := pgx.ConnConfig{
         Port:     5433,
         Host:     "localhost",

@@ -14,10 +14,11 @@ func SetupRoutes(app *fiber.App) {
 	// update => put
 	// delete => delete
 
-	app.Get("/", controller.BlogList)
+	app.Get("/blog", controller.BlogList)
 	app.Get("/:id", controller.BlogDetail)
 	app.Post("/", controller.BlogCreate)
 	app.Put("/:id", controller.BlogUpdate)
 	app.Delete("/:id", controller.BlogDelete)
 
+	app.Get("/test", controller.TestList)
 }
