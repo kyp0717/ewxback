@@ -30,10 +30,11 @@ func Testload(db *gorm.DB ) {
 
 	// Loop through the records and create Items
 	for _, record := range records {
-    price, _ := strconv.ParseFloat(record[1], 64)
+    fmt.Println(record[0])
+    fmt.Println(parseFloat(record[1]))
 		test := &model.Test{
 			Item:         record[0],
-			Price:        price,
+			Price:        parseFloat(record[1]),
 		}
 
 		// Save item to the database
@@ -45,4 +46,26 @@ func Testload(db *gorm.DB ) {
 
 	fmt.Println("Test Data imported successfully!")
 }
+// Helper function to parse integers
+func parseInt(value string) int {
+	if value == "" {
+		return 0
+	}
+	v, err := strconv.Atoi(value)
+	if err != nil {
+		return 0
+	}
+	return v
+}
 
+// Helper function to parse floats
+func parseFloat(value string) float64 {
+	if value == "" {
+		return 0.0
+	}
+	v, err := strconv.ParseFloat(value, 64)
+	if err != nil {
+		return 0.0
+	}
+	return v
+}

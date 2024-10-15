@@ -23,7 +23,7 @@ func init() {
 
 func main() {
    // load data
-   test.Testload(database.PgDBConn) 
+   test.LoadTest() 
 
    fmt.Println("Starting Fiber App")
    app := fiber.New()
