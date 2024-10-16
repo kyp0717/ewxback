@@ -4,7 +4,6 @@ import (
 	"log"
 	"os"
   "fmt"
-
 	"github.com/kyp0717/ewxback/model"
   "gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -33,7 +32,7 @@ func PgConnectDB() {
 
 	log.Println("Connection successful.")
 
-	db.AutoMigrate(new(model.Blog, model.category))
+	db.AutoMigrate(&model.Blog{}, &model.Item{}, &model.TestTable{})
 
 	PgDBConn = db
 
