@@ -1,76 +1,71 @@
 package test
 
 import (
-    "fmt"
-    "os"
+	"github.com/kyp0717/ewxback/model"
+  "github.com/shopspring/decimal"
+  "os"
+  "log"
+  "fmt"
+  "encoding/csv"
+	"gorm.io/gorm"
+  "strconv"
+) 
 
-    "github.com/jackc/pgx"
-)
+func Testload1(db *gorm.DB ) {
 
-func LoadTest1() {
-    pgxConConfig := pgx.ConnConfig{
-        Port:     5433,
-        Host:     "localhost",
-        Database: "postgres",
-        User:     "postgres",
-        Password: "password",
-    }
+	// Load CSV data
+	csvFile, err := os.Open("test/test.csv") // Replace with your CSV file path
+	if err != nil {
+		log.Fatalf("Failed to open CSV file: %v", err)
+	}
+	defer csvFile.Close()
 
-    conn, err := pgx.Connect(pgxConConfig)
-    if err != nil {
-        panic(err)
-    }
-    defer conn.Close()
+	reader := csv.NewReader(csvFile)
+	reader.FieldsPerRecord = -1 // Allow variable number of fields per record
 
-    // tables := []string{"table1", "table2", "table3",}
-    tables := []string{"test"}
+	// Read all rows from the CSV
+	records, err := reader.ReadAll()
+	if err != nil {
+		log.Fatalf("Failed to read CSV test file: %v", err)
+	}
 
-    import_dir := "test"
-    // export_dir := "test"
-    
-    for _, t := range tables {
-        // f, err := os.OpenFile(fmt.Sprintf("%s/table%s.csv", import_dir, t), os.O_RDONLY, 0777)
-        f, err := os.OpenFile(fmt.Sprintf("test.csv", import_dir, t), os.O_RDONLY, 0777)
-        if err != nil {
-            return
-        }
-        f.Close()
+	// Loop through the records and create Items
+	for _, record := range records {
+    p, _ := decimal.NewFromString(record[1])
+		test := &model.Test1{
+			Item:         record[0],
+			Price:        p,
+		}
 
-        err = importer(conn, f, t)
-        if err != nil {
-            break
-        }
+		// Save item to the database
+		err = db.Create(&test).Error
+		if err != nil {
+			log.Printf("Failed to insert test record: %v", err)
+		}
+	}
 
-        // fmt.Println("  Done with import and doing export")
-        // ef, err := os.OpenFile(fmt.Sprintf("%s/table_%s.csv", export_dir, t), os.O_CREATE|os.O_WRONLY, 0777)
-        // if err != nil {
-        //     fmt.Println("error opening file:", err)
-        //     return
-        // }
-        // ef.Close()
-        //
-        // err = exporter(conn, ef, t)
-        // if err != nil {
-        //     break
-        // }
-    }
+	fmt.Println("Test Data imported successfully!")
+}
+// Helper function to parse integers
+func parseInt(value string) int {
+	if value == "" {
+		return 0
+	}
+	v, err := strconv.Atoi(value)
+	if err != nil {
+		return 0
+	}
+	return v
 }
 
-func importer(conn *pgx.Conn, f *os.File, table string) error {
-    res, err := conn.CopyFromReader(f, fmt.Sprintf("COPY %s FROM STDIN DELIMITER '|' CSV HEADER", table))
-    if err != nil {
-        return err
-    }
-    fmt.Println("==> import rows affected:", res.RowsAffected())
-
-    return nil
-}
-
-func exporter(conn *pgx.Conn, f *os.File, table string) error {
-    res, err := conn.CopyToWriter(f, fmt.Sprintf("COPY %s TO STDOUT DELIMITER '|' CSV HEADER", table))
-    if err != nil {
-        return fmt.Errorf("error exporting file: %+v", err)
-    }
-    fmt.Println("==> export rows affected:", res.RowsAffected())
-    return nil
+// Helper function to parse floats
+func parseFloat(value string) float64 {
+	if value == "" {
+		return 0.0
+	}
+	v, err := strconv.ParseFloat(value, 64)
+	if err != nil {
+		return 0.0
+	}
+	return v
 }

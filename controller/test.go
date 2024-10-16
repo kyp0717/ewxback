@@ -10,12 +10,12 @@ import (
 )
 
 // Item list
-func TestList2() error {
+func PrintList() error {
 	// Sleep to add some delay in API response
 	time.Sleep(time.Millisecond * 3500)
 
 	db := database.PgDBConn
-	var ttt []model.TestTable
+	var ttt []model.Test1
 
   db.Find(&ttt)
   t,e := json.Marshal(ttt)
@@ -30,19 +30,38 @@ func TestList(c *fiber.Ctx) error {
 	time.Sleep(time.Millisecond * 3500)
 
 	db := database.PgDBConn
-	var ttt []model.TestTable
+	var records []model.Test1
 
-  db.Find(&ttt)
+  db.Find(&records)
 
   if len(records) == 0 {
     return c.Status(404).JSON(fiber.Map{"status":"error", "message":"No record", "data": nil})
   }
 
-	context["test_records"] = records
   return c.Status(200).JSON(fiber.Map{"status":"success", "message":"record found", "data": records})
- 
 }
 
+func Test2(c *fiber.Ctx) error {
+
+	context := fiber.Map{
+		"statusText": "Ok",
+		"msg":        "Blog List",
+	}
+
+	// Sleep to add some delay in API response
+	time.Sleep(time.Millisecond * 1500)
+
+	db := database.PgDBConn
+
+	var records []model.Test2
+
+	db.Find(&records)
+
+	context["test2_records"] = records
+
+	c.Status(200)
+	return c.JSON(context)
+}
 func BlogListTest(c *fiber.Ctx) error {
 
 	context := fiber.Map{

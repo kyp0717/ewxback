@@ -2,19 +2,17 @@ package test
 
 import (
 	"github.com/kyp0717/ewxback/model"
-  "github.com/shopspring/decimal"
   "os"
   "log"
   "fmt"
   "encoding/csv"
 	"gorm.io/gorm"
-  "strconv"
 ) 
 
 func Testload2(db *gorm.DB ) {
 
 	// Load CSV data
-	csvFile, err := os.Open("test/test.csv") // Replace with your CSV file path
+	csvFile, err := os.Open("test/test2.csv") // Replace with your CSV file path
 	if err != nil {
 		log.Fatalf("Failed to open CSV file: %v", err)
 	}
@@ -31,10 +29,9 @@ func Testload2(db *gorm.DB ) {
 
 	// Loop through the records and create Items
 	for _, record := range records {
-    p, _ := decimal.NewFromString(record[1])
-		test := &model.TestTable{
-			Item:         record[0],
-			Price:        p,
+		test := &model.Test2{
+			Item1:         record[0],
+			Item2:        record[1],
 		}
 
 		// Save item to the database
@@ -45,27 +42,4 @@ func Testload2(db *gorm.DB ) {
 	}
 
 	fmt.Println("Test Data imported successfully!")
-}
-// Helper function to parse integers
-func parseInt(value string) int {
-	if value == "" {
-		return 0
-	}
-	v, err := strconv.Atoi(value)
-	if err != nil {
-		return 0
-	}
-	return v
-}
-
-// Helper function to parse floats
-func parseFloat(value string) float64 {
-	if value == "" {
-		return 0.0
-	}
-	v, err := strconv.ParseFloat(value, 64)
-	if err != nil {
-		return 0.0
-	}
-	return v
 }

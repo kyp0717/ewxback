@@ -22,9 +22,10 @@ func init() {
 
 func main() {
    // load data
-   test.Testload2(database.PgDBConn) 
+   // test.Testload1(database.PgDBConn) 
+   // test.Testload2(database.PgDBConn) 
 
-   controller.TestList2() 
+   controller.PrintList() 
 
    fmt.Println("Starting Fiber App")
    app := fiber.New()
