@@ -21,7 +21,7 @@ func BlogList(c *fiber.Ctx) error {
 	// Sleep to add some delay in API response
 	time.Sleep(time.Millisecond * 1500)
 
-	db := database.DBConn
+	db := database.PgDBConn
 
 	var records []model.Blog
 
@@ -45,7 +45,7 @@ func BlogDetail(c *fiber.Ctx) error {
 
 	var record model.Blog
 
-	database.DBConn.First(&record, id)
+	database.PgDBConn.First(&record, id)
 
 	if record.ID == 0 {
 		log.Println("Record not Found.")
@@ -95,7 +95,7 @@ func BlogCreate(c *fiber.Ctx) error {
 		record.Image = filename
 	}
 
-	result := database.DBConn.Create(record)
+	result := database.PgDBConn.Create(record)
 
 	if result.Error != nil {
 		log.Println("Error in saving data.")
@@ -124,7 +124,7 @@ func BlogUpdate(c *fiber.Ctx) error {
 
 	var record model.Blog
 
-	database.DBConn.First(&record, id)
+	database.PgDBConn.First(&record, id)
 
 	if record.ID == 0 {
 		log.Println("Record not Found.")
@@ -160,7 +160,7 @@ func BlogUpdate(c *fiber.Ctx) error {
 		record.Image = filename
 	}
 
-	result := database.DBConn.Save(record)
+	result := database.PgDBConn.Save(record)
 
 	if result.Error != nil {
 		log.Println("Error in saving data.")
@@ -190,7 +190,7 @@ func BlogDelete(c *fiber.Ctx) error {
 
 	var record model.Blog
 
-	database.DBConn.First(&record, id)
+	database.PgDBConn.First(&record, id)
 
 	if record.ID == 0 {
 		log.Println("Record not Found.")
@@ -207,7 +207,7 @@ func BlogDelete(c *fiber.Ctx) error {
 		log.Println("Error in deleting file.", err)
 	}
 
-	result := database.DBConn.Delete(record)
+	result := database.PgDBConn.Delete(record)
 
 	if result.Error != nil {
 		context["msg"] = "Something went wrong."
