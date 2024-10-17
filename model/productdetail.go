@@ -1,0 +1,50 @@
+package model
+
+type ProductDetail struct {
+	CAT               string `json:"CAT" gorm:"column:CAT;type:text"`
+	SKU               string `json:"SKU" gorm:"column:SKU;type:text"`
+	UPC               int64  `json:"UPC" gorm:"column:UPC;null"`
+	ProductName       string `json:"Product_Name" gorm:"column:Product_Name;type:text"`
+	ProductDescription string `json:"Product_Description" gorm:"column:Product_Description;type:text"`
+	ShippingMethod    string `json:"Shipping_Method" gorm:"column:Shipping_Method;type:text"`
+	ProductCategory   string `json:"Product_Category" gorm:"column:Product_Category;type:text"`
+	ItemQty           int    `json:"Item_Qty" gorm:"column:Item_Qty;null"`
+	ItemBoxQty        int    `json:"Item_Box_Qty" gorm:"column:Item_Box_Qty;null"`
+	ItemDims          string `json:"Item_Dims" gorm:"column:Item_Dims;type:text"`
+	BoxDims           string `json:"Box_Dims" gorm:"column:Box_Dims;type:text"`
+	Image1            string `json:"Image1" gorm:"column:Image1;type:text"`
+	Image2            string `json:"Image2" gorm:"column:Image2;type:text"`
+	Image3            string `json:"Image3" gorm:"column:Image3;type:text"`
+	Image4            string `json:"Image4" gorm:"column:Image4;type:text"`
+	DimsImage1        string `json:"Dims_Image1" gorm:"column:Dims_Image1;type:text"`
+	DimsImage2        string `json:"Dims_Image2" gorm:"column:Dims_Image2;type:text"`
+	DimsImage3        string `json:"Dims_Image3" gorm:"column:Dims_Image3;type:text"`
+	Pdf1URL           string `json:"pdf1_URL" gorm:"column:pdf1_URL;type:text"`
+	Pdf2URL           string `json:"pdf2_URL" gorm:"column:pdf2_URL;type:text"`
+	Pdf3URL           string `json:"pdf3_URL" gorm:"column:pdf3_URL;type:text"`
+	UseCategory       string `json:"Use_Category" gorm:"column:Use_Category;type:text"`
+	SubCategory       string `json:"Sub_Category" gorm:"column:Sub_Category;type:text"`
+	ChairTypes        string `json:"Chair_Types" gorm:"column:Chair_Types;type:text"`
+	Finish            string `json:"Finish" gorm:"column:Finish;type:text"`
+	SizeShape         string `json:"Size_Shape" gorm:"column:Size_Shape;type:text"`
+	Style             string `json:"Style" gorm:"column:Style;type:text"`
+	Pieces            string `json:"Pieces" gorm:"column:Pieces;type:text"`
+	Collection        string `json:"Collection" gorm:"column:Collection;type:text"`
+	ProductTypes      string `json:"Product_Types" gorm:"column:Product_Types;type:text"`
+	WoodSpecies       string `json:"Wood_Species" gorm:"column:Wood_Species;type:text"`
+	ProductGroupID    string `json:"Product_Group_ID" gorm:"column:Product_Group_ID;type:text"`
+	AmazonSKU         string `json:"Amazon_SKU" gorm:"column:Amazon_SKU;type:text"`
+	AmazonURL         string `json:"Amazon_URL" gorm:"column:Amazon_URL;type:text"`
+	WayfairSKU        string `json:"Wayfair_SKU" gorm:"column:Wayfair_SKU;type:text"`
+	Feature1          string `json:"Feature_1" gorm:"column:Feature_1;type:text"`
+	Feature2          string `json:"Feature_2" gorm:"column:Feature_2;type:text"`
+	Feature3          string `json:"Feature_3" gorm:"column:Feature_3;type:text"`
+	Feature4          string `json:"Feature_4" gorm:"column:Feature_4;type:text"`
+	Feature5          string `json:"Feature_5" gorm:"column:Feature_5;type:text"`
+	Feature6          string `json:"Feature_6" gorm:"column:Feature_6;type:text"`
+	Feature7          string `json:"Feature_7" gorm:"column:Feature_7;type:text"`
+	Feature8          string `json:"Feature_8" gorm:"column:Feature_8;type:text"`
+	Active            string `json:"Active" gorm:"column:Active;type:text"`
+	UserID            string `json:"UserID" gorm:"column:UserID;type:text"`
+	UserTimeStamp     string `json:"UserTimeStamp" gorm:"column:UserTimeStamp;type:text"`
+}
