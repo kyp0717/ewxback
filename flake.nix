@@ -14,7 +14,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           templOverlay = templ.packages.${system}.templ;
-
+          # nvim =  ewxfront.devShells.${system}.default ;
           # The current default sdk for macOS fails to compile go projects, so we use a newer one for now.
           # This has no effect on other platforms.
           callPackage = pkgs.darwin.apple_sdk_11_0.callPackage or pkgs.callPackage;
@@ -29,9 +29,7 @@
 
           devShells.nvim = ewxfront.devShells.${system}.default ;
           devShells.templ = with pkgs; mkShell {
-         	   buildInputs = [ templOverlay 
-               ewxfront.devShells.${system}.default 
-              ];
+         	   buildInputs = [   templOverlay ];
 	  };
 	  
         })
