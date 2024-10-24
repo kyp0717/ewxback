@@ -22,10 +22,10 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        packages.default = pkgs.callPackage ./nix {
+        packages.default = pkgs.callPackage ./default.nix {
           inherit (gomod2nix.legacyPackages.${system}) buildGoApplication;
         };
-        devShells.default = pkgs.callPackage ./nix/shell.nix {
+        devShells.default = pkgs.callPackage ./shell.nix {
           inherit (gomod2nix.legacyPackages.${system}) mkGoEnv gomod2nix;
         };
 
