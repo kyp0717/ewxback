@@ -4,7 +4,8 @@ go 1.22.5
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
-	github.com/andybalholm/brotli v1.0.5 // indirect
+	github.com/a-h/templ v0.2.786 // indirect
+	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/docker/docker v27.3.1+incompatible // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/gofiber/fiber v1.14.6 // indirect
@@ -34,7 +35,7 @@ require (
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/crypto v0.17.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/sys v0.23.0 // indirect
 	golang.org/x/text v0.18.0 // indirect
 	gorm.io/driver/postgres v1.5.9 // indirect
 	gorm.io/gorm v1.25.12 // indirect
