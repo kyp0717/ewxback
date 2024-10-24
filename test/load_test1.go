@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/kyp0717/ewxback/model"
+	"github.com/kyp0717/ewxback/webapp/model"
   "github.com/shopspring/decimal"
   "os"
   "log"

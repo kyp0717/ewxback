@@ -1,15 +1,17 @@
 package main
 
 import (
- "github.com/kyp0717/ewxback/test"
- "github.com/gofiber/fiber/v2"
- "github.com/joho/godotenv"
- "github.com/gofiber/fiber/v2/middleware/logger"
- "fmt"
- "log"
-  "github.com/kyp0717/ewxback/router"
-  "github.com/kyp0717/ewxback/database"
-  "github.com/kyp0717/ewxback/controller"
+ //"github.com/kyp0717/ewxback/test"
+
+   "github.com/gofiber/fiber/v2"
+   "github.com/joho/godotenv"
+   "github.com/gofiber/fiber/v2/middleware/logger"
+   "fmt"
+   "log"
+   "github.com/kyp0717/ewxback/webapp/router"
+   "github.com/kyp0717/ewxback/database"
+
+ // "github.com/kyp0717/ewxback/webapp/controller"
 )
 
 func init() {
@@ -21,16 +23,14 @@ func init() {
 }
 
 func main() {
-   // load data
-   // test.Testload1(database.PgDBConn) 
-   // test.Testload2(database.PgDBConn) 
 
-   controller.PrintList() 
+
+
 
    fmt.Println("Starting Fiber App")
    app := fiber.New()
    app.Use(logger.New())
-	 router.SetupRoutes(app) 
+	router.SetupRoutes(app) 
    app.Listen(":3000")
 
 }
