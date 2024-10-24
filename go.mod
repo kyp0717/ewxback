@@ -3,6 +3,7 @@ module github.com/kyp0717/ewxback
 go 1.22.5
 
 require (
+
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/a-h/templ v0.2.786 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
