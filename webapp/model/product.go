@@ -1,9 +1,9 @@
 package model
 
 type Product struct {
-	SKU         string `json:"SKU" gorm:"primarykey;type:text"`
-	Product     string `json:"Product" gorm:"column:Product;type:text"`
-	CreateDate  string `json:"Create_Date" gorm:"column:Create_Date;type:text"`
+	SKU         string `json:"SKU" gorm:"column:SKU;type:text;size:20;null"`
+	Product     string `json:"Product" gorm:"column:Product;type:text;null"`
+	CreateDate  string `json:"Create_Date" gorm:"column:Create_Date;type:text;null"`
 	TotalBoxes  int    `json:"Total_Boxes" gorm:"column:Total_Boxes;null"`
 
 	SKU1        string `json:"SKU_1" gorm:"column:SKU_1;type:text"`
@@ -33,4 +33,7 @@ type Product struct {
 	SKU7        string `json:"SKU_7" gorm:"column:SKU_7;type:text"`
 	Box7        int    `json:"BOX_7" gorm:"column:BOX_7;null"`
 	Piece7      int    `json:"Piece_7" gorm:"column:Piece_7;null"`
+	
+	UserName		string  `json:"UserName" gorm:"column:UserName;type:text;size:20;null"`	
+	UpdateStamp		string  `json:"UpdateStamp" gorm:"column:UpdateStamp;type:date;null"`
 }

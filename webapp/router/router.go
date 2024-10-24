@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/kyp0717/ewxback/controller"
+	"github.com/kyp0717/ewxback/webapp/controller"
 )
 
 // Setup routing information

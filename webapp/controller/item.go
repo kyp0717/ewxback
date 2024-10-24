@@ -2,10 +2,9 @@ package controller
 
 import (
 	"time"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/kyp0717/ewxback/database"
-	"github.com/kyp0717/ewxback/model"
+	"github.com/kyp0717/ewxback/webapp/model"
 )
 
 // Item list
